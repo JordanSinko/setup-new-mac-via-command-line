@@ -47,11 +47,14 @@ echo "Upgrading Homebrew..."
 brew upgrade
 
 # Update the Terminal
-# Install oh-my-zsh
-echo "Installing oh-my-zsh..."
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-echo "Need to logout now to start the new SHELL..."
-logout
+# Install oh-my-zsh (skip if already installed)
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+    echo "Installing oh-my-zsh..."
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+    echo "oh-my-zsh installed successfully"
+else
+    echo "oh-my-zsh already installed!"
+fi
 
 # Install Git
 echo "Installing Git..."
@@ -88,13 +91,9 @@ brew install speedtest_cli
 echo "Installing Anki..."
 brew install anki
 
-# Install arq 
+# Install arq
 echo "Installing Arq..."
 brew install arq
-
-# Install bartender
-echo "Installing Bartender..."
-brew install bartender
 
 # Install BBEdit
 echo "Installing BBEdit..."
@@ -127,14 +126,6 @@ brew install bitcoin-core
 echo "Installing Brave Browser..."
 brew install brave-browser
 
-# Install cardhop
-echo "Installing Cardhop..."
-brew install cardhop
-
-# Install fantastical
-echo "Installing Fantastical..."
-brew install fantastical
-
 # Install chronosync
 echo "Installing ChronoSync"
 brew install chronosync
@@ -143,15 +134,6 @@ brew install chronosync
 echo "Installing Hazel..."
 brew install hazel
 
-# Install Miro
-echo "Installing Miro..."
-brew install miro
-
-# Install NordVPN
-echo "Installing NordVPN..."
-brew install nordvpn
-
-
 # Install OmniDiskSweeper
 echo "Installing OmniDiskSweeper..."
 brew install omnidisksweeper
@@ -159,11 +141,7 @@ brew install omnidisksweeper
 # Install Omnifocus
 echo "Installing Omnifocus..."
 brew install omnifocus
-# Above install failed for me 
-
-# Install Resilio-sync
-echo "Installing Resilio-sync..."
-brew install resilio-sync
+# Above install failed for me
 
 # Install slack
 echo "Installing Slack..."
@@ -180,10 +158,6 @@ brew install discord
 # Install Telegram
 echo "Installing Telegram..."
 brew install telegram
-
-# Install Timing
-echo "Installing Timing..."
-brew install timing
 
 # Install Transmission
 echo "Installing Transmission..."
@@ -221,7 +195,9 @@ brew install visual-studio-code
 echo "Installing Dash..."
 brew install --cask dash
 
-# Install OBS
+## Install OBS
+echo "Install OBS..."
+brew install --cask obs
 echo "Install OBS..."
 brew install --cask obs
 
@@ -233,55 +209,96 @@ brew install --cask clay
 echo "Install Github Command line..."
 brew install gh
 
-# Install Ledger Live...
-echo "Install Ldeger Live..."
+## Install Ledger Live...
+echo "Install Ledger Live..."
 brew install ledger-live
 
-# Install Terminal 
+## Install Terminal 
 echo "Install new Warp Terminal..."
 brew install warp
 
-# Install Dash
-echo "Installing Dash..."
-brew install dash
+## Install Ghostty Terminal...
+echo "Installing Ghostty Terminal..."
+brew install ghostty
 
-# Install jq Command line JSON tool...
-echo "Install jq Command line JSON tool..."
-brew install jq
+## Install Docker...
+echo "Installing Docker..."
+brew install docker
+
+## Install Modern Development Tools...
+echo "Installing Node.js..."
+brew install node
+
+echo "Installing Rust..."
+brew install rust
+
+echo "Installing Bun (JavaScript runtime)..."
+brew install bun
+
+echo "Installing Atuin (shell history)..."
+brew install atuin
+
+echo "Installing Ollama (local LLM runner)..."
+brew install ollama
+
+echo "Installing KeyCastr (keystroke visualizer)..."
+brew install keycastr
+
+echo "Installing Ice (menu bar manager)..."
+brew install jordanbaird-ice
+
+echo "Installing GitHub Copilot for Xcode..."
+brew install github-copilot-for-xcode
+
+echo "Installing Elgato Stream Deck..."
+brew install elgato-stream-deck
+
+## Install Modern Code Editors...
+echo "Installing Zed editor..."
+brew install zed
+
+echo "Installing Cursor (AI code editor)..."
+brew install cursor
+
+## Install Communication and Productivity Apps...
+echo "Installing WhatsApp..."
+brew install whatsapp
+
+echo "Installing Linear..."
+brew install linear
 
 # Install Mac App Store Command line...
 echo "Installing Mac App Store Command line..."
 brew install mas
 
 # Install starship cross-shell prompt...
-Echo "installing Starship cross-shell prompt..."
+echo "Installing Starship cross-shell prompt..."
 brew install starship
 
-# Install Apps from the Mac App store 
+# Install Apps from the Mac App store
 appStoreApps=(
-	1333542190  # 1Password 7               (7.9.6)
-	1225570693  # Ulysses                   (29.2)
-	1153157709  # Speedtest                 (1.25)
-	720669838   # iThoughtsX                (9.2)
-	1277179284  # FSNotes                   (6.1.2)
-	497799835   # Xcode                     (14.2)
+	1333542190  # 1Password 7               (7.9.11)
+	1225570693  # Ulysses                   (38.2)
+	1153157709  # Speedtest                 (1.27)
+	720669838   # iThoughtsX                (9.4)
+	497799835   # Xcode                     (latest)
 	1289119450  # URL Linker                (1.1)
-	403504866   # PCalc                     (4.10.5)
-	# 1176895641  # Spark                     (2.11.27)
-	1640236961  # Save to Reader            (0.15.10)
-	1303222628  # Paprika Recipe Manager 3  (3.7.2)
-	1376878040  # BlueWallet                (6.2.18)
-	1659363738  # TapTab                    (1.3)
-	899247664   # TestFlight                (3.2.3)
-	409201541   # Pages                     (12.2.1)
-	1055511498  # Day One                   (2023.1)
-	639968404   # Parcel                    (7.6.6)
-	1480068668  # Messenger                 (169.0)
-	408981434   # iMovie                    (10.3.5)
-	409203825   # Numbers                   (12.2.1)
-	1381004916  # Discovery                 (2.1.0)
-	1544743900  # Hush                      (1.0.10)
-	409183694   # Keynote                   (12.2.1)
+	403504866   # PCalc                     (4.10.8)
+	1640236961  # Save to Reader            (0.16.9)
+	1303222628  # Paprika Recipe Manager 3  (3.8.1)
+	1376878040  # BlueWallet                (7.1.9)
+	899247664   # TestFlight                (3.8.0)
+	409201541   # Pages                     (14.4)
+	1055511498  # Day One                   (2025.11)
+	639968404   # Parcel                    (7.15.4)
+	1480068668  # Messenger                 (507.0.0)
+	408981434   # iMovie                    (10.4.3)
+	409203825   # Numbers                   (14.4)
+	1544743900  # Hush                      (1.0.17)
+	409183694   # Keynote                   (14.4)
+	1358823008  # Flighty                   (4.5.1)
+	6714467650  # Perplexity                (2.250522.0)
+	904280696   # Things                    (3.21.11)
 
 )
 
@@ -289,7 +306,7 @@ appStoreApps=(
 # WARNING: This tool can only reinstall apps that are already tied to you account. If you're downloading something for the first time do it through AppStore
 mas install ${appStoreApps[@]}
 
-# Accept XCode license 
+# Accept XCode license
 sudo xcodebuild -license accept
 
 
@@ -299,13 +316,12 @@ echo "Running brew cleanup..."
 brew cleanup
 echo "You're done!"
 
-# Additional to consider 
+# Additional modern tools to consider
 # default-folder-x
 # karabiner-elements
 # keyboard-maestro
 # slack-cli
-# whatsapp
-
+# proxyman
 
 # Items that need to be manually installed:
 # - [WordCounter](https://wordcounterapp.com)
