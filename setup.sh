@@ -83,7 +83,7 @@ echo "Installing Speedtest..."
 brew install speedtest_cli
 
 # Install 1Password
-# this is commented out because I don't want to upgrade to 1Password 7
+# this is commented out because I don't want to upgrade to 1Password 8
 # echo "Installing 1Password..."
 # brew install 1password
 
@@ -106,11 +106,11 @@ git config --global core.editor "bbedit -w"
 echo "Installing Deno..."
 brew install deno
 
-# Install Marksman Language server protocol 
+# Install Marksman Language server protocol
 echo "Installing Marksman..."
 brew install marksman
 
-# Install proselint 
+# Install proselint
 echo "Installing Proselint..."
 brew install proselint
 
@@ -191,13 +191,7 @@ brew install netnewswire
 echo "Installing VS Code..."
 brew install visual-studio-code
 
-# Install Dash
-echo "Installing Dash..."
-brew install --cask dash
-
 ## Install OBS
-echo "Install OBS..."
-brew install --cask obs
 echo "Install OBS..."
 brew install --cask obs
 
@@ -212,10 +206,6 @@ brew install gh
 ## Install Ledger Live...
 echo "Install Ledger Live..."
 brew install ledger-live
-
-## Install Terminal 
-echo "Install new Warp Terminal..."
-brew install warp
 
 ## Install Ghostty Terminal...
 echo "Installing Ghostty Terminal..."
