@@ -46,50 +46,19 @@ brew update
 echo "Upgrading Homebrew..."
 brew upgrade
 
-# Update the Terminal
-# Install oh-my-zsh (skip if already installed)
-if [ ! -d "$HOME/.oh-my-zsh" ]; then
-    echo "Installing oh-my-zsh..."
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-    echo "oh-my-zsh installed successfully"
-else
-    echo "oh-my-zsh already installed!"
-fi
-
 # Install Git
 echo "Installing Git..."
 brew install git
 
-# Install Rust
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-
-# Install Python
-echo "Installing Python..."
-brew install python
-
-# Install Sonos Command Line
-echo "Installing Sonos Commandline..."
-pip3 install -U soco-cli
-
-# Install tea package manager
-# TODO fix below line not working
-# sh <(curl https://tea.xyz)
-
+# On macOS and Linux.
+curl -LsSf https://astral.sh/uv/install.sh | sh
+uv python install 3.14.2
 
 # Install other useful binaries.
 
 # Install Speedtest
 echo "Installing Speedtest..."
 brew install speedtest_cli
-
-# Install 1Password
-# this is commented out because I don't want to upgrade to 1Password 8
-# echo "Installing 1Password..."
-# brew install 1password
-
-# Install Anki
-echo "Installing Anki..."
-brew install anki
 
 # Install arq
 echo "Installing Arq..."
@@ -102,25 +71,10 @@ brew install bbedit
 # configure git to use BBEdit as the editor for commits
 git config --global core.editor "bbedit -w"
 
-# Install deno
-echo "Installing Deno..."
-brew install deno
-
-# Install Marksman Language server protocol
-echo "Installing Marksman..."
-brew install marksman
-
-# Install proselint
-echo "Installing Proselint..."
-brew install proselint
 
 # Install lighthouse
 echo "Installing lighthouse..."
 brew install lighthouse
-
-# Install bitcoin-core
-echo "Installing Bitcoin-core"
-brew install bitcoin-core
 
 # Install Brave Browser
 echo "Installing Brave Browser..."
@@ -133,10 +87,6 @@ brew install chronosync
 # Install hazel
 echo "Installing Hazel..."
 brew install hazel
-
-# Install OmniDiskSweeper
-echo "Installing OmniDiskSweeper..."
-brew install omnidisksweeper
 
 # Install Omnifocus
 echo "Installing Omnifocus..."
@@ -183,14 +133,6 @@ brew install readwise-ibooks
 echo "Installing VLC..."
 brew install vlc
 
-# Install Netnewswire
-echo "Installing netnewswire..."
-brew install netnewswire
-
-# Install VS Code
-echo "Installing VS Code..."
-brew install visual-studio-code
-
 ## Install OBS
 echo "Install OBS..."
 brew install --cask obs
@@ -207,26 +149,9 @@ brew install gh
 echo "Install Ledger Live..."
 brew install ledger-live
 
-## Install Ghostty Terminal...
-echo "Installing Ghostty Terminal..."
-brew install ghostty
-
-## Install Docker...
-echo "Installing Docker..."
-brew install docker
-
 ## Install Modern Development Tools...
 echo "Installing Node.js..."
 brew install node
-
-echo "Installing Rust..."
-brew install rust
-
-echo "Installing Bun (JavaScript runtime)..."
-brew install bun
-
-echo "Installing Atuin (shell history)..."
-brew install atuin
 
 echo "Installing Ollama (local LLM runner)..."
 brew install ollama
@@ -257,13 +182,12 @@ brew install whatsapp
 echo "Installing Linear..."
 brew install linear
 
+echo "Installing Tailscale..."
+brew install tailscale
+
 # Install Mac App Store Command line...
 echo "Installing Mac App Store Command line..."
 brew install mas
-
-# Install starship cross-shell prompt...
-echo "Installing Starship cross-shell prompt..."
-brew install starship
 
 # Install Apps from the Mac App store
 appStoreApps=(
@@ -289,12 +213,15 @@ appStoreApps=(
 	1358823008  # Flighty                   (4.5.1)
 	6714467650  # Perplexity                (2.250522.0)
 	904280696   # Things                    (3.21.11)
-
+	1365531024  # 1Blocker
+	1508732804  # Soulver
 )
 
 # Install AppStore apps
 # WARNING: This tool can only reinstall apps that are already tied to you account. If you're downloading something for the first time do it through AppStore
 mas install ${appStoreApps[@]}
+
+mas uninstall 682658836
 
 # Accept XCode license
 sudo xcodebuild -license accept
