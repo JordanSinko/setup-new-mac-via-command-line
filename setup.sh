@@ -179,11 +179,26 @@ brew install cursor
 echo "Installing WhatsApp..."
 brew install whatsapp
 
-echo "Installing Linear..."
-brew install linear
-
 echo "Installing Tailscale..."
 brew install tailscale
+
+echo "Installing MacWhisper..."
+brew install --cask macwhisper
+
+echo "Install Microft Teams..."
+brew install --cask microsoft-teams
+
+echo "Install Open Code..."
+brew install anomalyco/tap/opencode
+
+echo "Install Claude Code..."
+brew install --cask claude-code
+
+echo "Install Codex..."
+brew install --cask codex
+
+echo "Install Mole..."
+brew install mole
 
 # Install Mac App Store Command line...
 echo "Installing Mac App Store Command line..."
@@ -196,15 +211,12 @@ appStoreApps=(
 	1153157709  # Speedtest                 (1.27)
 	720669838   # iThoughtsX                (9.4)
 	497799835   # Xcode                     (latest)
-	1289119450  # URL Linker                (1.1)
-	403504866   # PCalc                     (4.10.8)
 	1640236961  # Save to Reader            (0.16.9)
 	1303222628  # Paprika Recipe Manager 3  (3.8.1)
 	1376878040  # BlueWallet                (7.1.9)
 	899247664   # TestFlight                (3.8.0)
 	409201541   # Pages                     (14.4)
 	1055511498  # Day One                   (2025.11)
-	639968404   # Parcel                    (7.15.4)
 	1480068668  # Messenger                 (507.0.0)
 	408981434   # iMovie                    (10.4.3)
 	409203825   # Numbers                   (14.4)
@@ -215,6 +227,7 @@ appStoreApps=(
 	904280696   # Things                    (3.21.11)
 	1365531024  # 1Blocker
 	1508732804  # Soulver
+	6739505345  # Hyperspace
 )
 
 # Install AppStore apps
