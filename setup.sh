@@ -209,6 +209,10 @@ brew install --cask chatgpt
 echo "Install Claude..."
 brew install --cask claude
 
+echo "Install Screen Studio..."
+brew install --cask screen-studio
+
+
 # Install Mac App Store Command line...
 echo "Installing Mac App Store Command line..."
 brew install mas
@@ -218,7 +222,6 @@ appStoreApps=(
 	1333542190  # 1Password 7               (7.9.11)
 	1225570693  # Ulysses                   (38.2)
 	1153157709  # Speedtest                 (1.27)
-	720669838   # iThoughtsX                (9.4)
 	497799835   # Xcode                     (latest)
 	1640236961  # Save to Reader            (0.16.9)
 	1303222628  # Paprika Recipe Manager 3  (3.8.1)
@@ -226,7 +229,6 @@ appStoreApps=(
 	899247664   # TestFlight                (3.8.0)
 	409201541   # Pages                     (14.4)
 	1055511498  # Day One                   (2025.11)
-	1480068668  # Messenger                 (507.0.0)
 	408981434   # iMovie                    (10.4.3)
 	409203825   # Numbers                   (14.4)
 	1544743900  # Hush                      (1.0.17)
@@ -243,7 +245,8 @@ appStoreApps=(
 # WARNING: This tool can only reinstall apps that are already tied to you account. If you're downloading something for the first time do it through AppStore
 mas install ${appStoreApps[@]}
 
-mas uninstall 682658836
+echo "Uninstall Garage Band..."
+mas uninstall 682658836 # uninstall garageband 
 
 # Accept XCode license
 sudo xcodebuild -license accept
