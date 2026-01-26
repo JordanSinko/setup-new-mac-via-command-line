@@ -12,6 +12,9 @@ while true; do
     kill -0 "$$" || exit
 done 2>/dev/null &
 
+# trying to prevent from asking for sudo password again but this is not working
+export NONINTERACTIVE=1
+
 # Setup Finder Commands
 # Show Library Folder in Finder
 chflags nohidden ~/Library
@@ -63,6 +66,24 @@ mas uninstall 682658836 # uninstall garageband
 
 # Accept XCode license
 sudo xcodebuild -license accept
+
+# Setup shell config
+# Define the file path
+ZENV="$HOME/.zshenv"
+
+# Ensure the file exists so grep doesn't fail
+touch "$ZENV"
+
+# Only add the lines if they aren't already there
+if ! grep -q "HOMEBREW_EDITOR" "$ZENV"; then
+  cat << 'EOF' >> "$ZENV"
+
+# BBEdit Configuration
+export HOMEBREW_EDITOR="bbedit"
+export EDITOR="bbedit"
+EOF
+fi
+source ~/.zshrc
 
 
 # Remove outdated versions from the cellar.
