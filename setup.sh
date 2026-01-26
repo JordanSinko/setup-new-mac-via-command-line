@@ -104,3 +104,5 @@ echo "You're done!"
 # - Readwise
 # - Insta360 Link Controller
 # - [Exodus](https://www.exodus.com/m1/)
+# - Create SSH Key for Github
+# - Install iCloud Password extension for Brave Browser
