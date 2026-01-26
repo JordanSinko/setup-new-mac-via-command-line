@@ -200,6 +200,15 @@ brew install --cask codex
 echo "Install Mole..."
 brew install mole
 
+echo "Install Obscura VPN..."
+brew install --cask obscura-vpn
+
+echo "Install ChatGPT..."
+brew install --cask chatgpt
+
+echo "Install Claude..."
+brew install --cask claude
+
 # Install Mac App Store Command line...
 echo "Installing Mac App Store Command line..."
 brew install mas
