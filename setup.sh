@@ -54,12 +54,12 @@ echo "Installing Brewfile"
 brew bundle install
 
 # On macOS and Linux.
+echo "Installing Python"
 curl -LsSf https://astral.sh/uv/install.sh | sh
-uv python install 3.14.2
+uv python install --default
 
-# configure git to use BBEdit as the editor for commits
-git config --global core.editor "bbedit -w"
-
+echo "Installing Python tools"
+uv tool install gimme-aws-creds
 
 echo "Uninstall Garage Band..."
 mas uninstall 682658836 # uninstall garageband 
@@ -68,21 +68,9 @@ mas uninstall 682658836 # uninstall garageband
 sudo xcodebuild -license accept
 
 # Setup shell config
-# Define the file path
-ZENV="$HOME/.zshenv"
+touch "$HOME/.zshenv"
+touch "$HOME/.zprofile"
 
-# Ensure the file exists so grep doesn't fail
-touch "$ZENV"
-
-# Only add the lines if they aren't already there
-if ! grep -q "HOMEBREW_EDITOR" "$ZENV"; then
-  cat << 'EOF' >> "$ZENV"
-
-# BBEdit Configuration
-export HOMEBREW_EDITOR="bbedit"
-export EDITOR="bbedit"
-EOF
-fi
 source ~/.zshrc
 
 
@@ -90,19 +78,5 @@ source ~/.zshrc
 echo "Running brew cleanup..."
 brew bundle cleanup
 brew cleanup
+
 echo "You're done!"
-
-# Additional modern tools to consider
-# default-folder-x
-# karabiner-elements
-# keyboard-maestro
-# slack-cli
-# proxyman
-
-# Items that need to be manually installed:
-# - [WordCounter](https://wordcounterapp.com)
-# - Readwise
-# - Insta360 Link Controller
-# - [Exodus](https://www.exodus.com/m1/)
-# - Create SSH Key for Github
-# - Install iCloud Password extension for Brave Browser
