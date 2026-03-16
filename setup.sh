@@ -70,15 +70,41 @@ mas uninstall 682658836 # uninstall garageband
 sudo xcodebuild -license accept
 
 # Setup shell config
-touch "$HOME/.zshenv"
-touch "$HOME/.zprofile"
+# Define the file path
+ZPROF="$HOME/.zprofile"
 
-source ~/.zshrc
+# Ensure the file exists so grep doesn't fail
+touch "$ZPROF"
 
+if ! grep -q "HOMEBREW_CASK_OPTS" "$ZPROF"; then
+  cat << 'EOF' >> "$ZPROF"
+
+# Homebrew
+export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
+eval "$(/opt/homebrew/bin/brew shellenv)"
+EOF
+fi
+
+if ! grep -q "VOLTA_HOME" "$ZPROF"; then
+  cat << 'EOF' >> "$ZPROF"
+
+# Volta
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+EOF
+fi
+
+if ! grep -q "GO_HOME" "$ZPROF"; then
+  cat << 'EOF' >> "$ZPROF"
+
+# Go
+export GO_HOME="$HOME/go"
+export PATH="$PATH:$GO_HOME/bin"
+EOF
+fi
 
 # Remove outdated versions from the cellar.
 echo "Running brew cleanup..."
 brew bundle cleanup
 brew cleanup
-
 echo "You're done!"
