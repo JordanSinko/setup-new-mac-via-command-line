@@ -12,7 +12,7 @@ curl -fsSL "https://github.com/$OWNER/$REPO/archive/refs/heads/$BRANCH.tar.gz" |
 # tar extracts to REPO_NAME-BRANCH/, so move it
 mv "$REPO-$BRANCH" "$INSTALL_DIR"
 
-cd "$INSTALL_DIR"
+cd "$INSTALL_DIR/$REPO-$BRANCH"
 chmod +x setup.sh
 ./setup.sh
 
