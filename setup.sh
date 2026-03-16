@@ -28,6 +28,16 @@ defaults write com.apple.finder ShowPathbar -bool true
 # Show Status Bar in Finder
 defaults write com.apple.finder ShowStatusBar -bool true
 
+if test ! "$(which uv)"; then
+    echo "Installing uv..."
+    curl -LsSf https://astral.sh/uv/install.sh | sh
+    
+else
+    echo "UV already installed!"
+fi
+
+uv python install --default
+
 # Check for Homebrew, and then install it
 if test ! "$(which brew)"; then
     echo "Installing homebrew..."
@@ -52,14 +62,6 @@ brew upgrade
 # Install everything from the Brewfile in current folder
 echo "Installing Brewfile"
 brew bundle install
-
-# On macOS and Linux.
-echo "Installing Python"
-curl -LsSf https://astral.sh/uv/install.sh | sh
-uv python install --default
-
-echo "Installing Python tools"
-uv tool install gimme-aws-creds
 
 echo "Uninstall Garage Band..."
 mas uninstall 682658836 # uninstall garageband 
