@@ -59,16 +59,6 @@ brew update
 echo "Upgrading Homebrew..."
 brew upgrade
 
-# Install everything from the Brewfile in current folder
-echo "Installing Brewfile"
-brew bundle install
-
-echo "Uninstall Garage Band..."
-mas uninstall 682658836 # uninstall garageband 
-
-# Accept XCode license
-sudo xcodebuild -license accept
-
 # Setup shell config
 # Define the file path
 ZPROF="$HOME/.zprofile"
@@ -102,6 +92,18 @@ export GO_HOME="$HOME/go"
 export PATH="$PATH:$GO_HOME/bin"
 EOF
 fi
+
+source "$ZPROF"
+
+# Install everything from the Brewfile in current folder
+echo "Installing Brewfile"
+brew bundle install
+
+echo "Uninstall Garage Band..."
+mas uninstall 682658836 # uninstall garageband 
+
+# Accept XCode license
+sudo xcodebuild -license accept
 
 # Remove outdated versions from the cellar.
 echo "Running brew cleanup..."
