@@ -13,7 +13,7 @@ curl -fsSL "https://github.com/$OWNER/$REPO/archive/refs/heads/$BRANCH.tar.gz" |
 mv "$REPO-$BRANCH" "$INSTALL_DIR"
 
 cd "$INSTALL_DIR/$REPO-$BRANCH"
-chmod +x setup.sh
+chmod +x ./setup.sh
 ./setup.sh
 
 echo "Cleaning up $REPO..."
